@@ -18,7 +18,7 @@ export function connect(errback: ErrCallback): void;
  * If pm2 is already running, your script will link to the existing daemon but will die once your process exits.
  * @param errback - Called when finished connecting to or launching the pm2 daemon process.
  */
-export function connect(noDaemonMode:boolean, errback: ErrCallback): void;
+export function connect(noDaemonMode: boolean, errback: ErrCallback): void;
 
 /**
  * Starts a script that will be managed by pm2.
@@ -40,7 +40,7 @@ export function start(jsonConfigFile: string, errback: ErrProcCallback): void;
  * @param errback - An errback called when the script has been started.
  * The proc parameter will be a pm2 process object.
  */
-export function start(script: string , errback: ErrProcCallback): void;
+export function start(script: string, errback: ErrProcCallback): void;
 /**
  * Starts a script that will be managed by pm2.
  * @param script - The path of the script to run.
@@ -69,7 +69,7 @@ export function disconnect(): void;
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback - called when the process is stopped
  */
-export function stop(process: string|number, errback: ErrProcCallback): void;
+export function stop(process: string | number, errback: ErrProcCallback): void;
 
 /**
  * Stops and restarts the process.
@@ -77,7 +77,7 @@ export function stop(process: string|number, errback: ErrProcCallback): void;
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback - called when the process is restarted
  */
-export function restart(process: string|number, errback: ErrProcCallback): void;
+export function restart(process: string | number, errback: ErrProcCallback): void;
 
 /**
  * Stops the process and removes it from pm2’s list.
@@ -86,7 +86,8 @@ export function restart(process: string|number, errback: ErrProcCallback): void;
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback - called when the process is deleted
  */
-declare function del(process: string|number, errback: ErrProcCallback): void;
+declare function del(process: string | number, errback: ErrProcCallback): void;
+
 // have to use this construct because `delete` is a reserved word
 export {del as delete};
 
@@ -98,7 +99,7 @@ export {del as delete};
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback - called when the process is reloaded
  */
-export function reload(process: string|number, errback: ErrProcCallback): void;
+export function reload(process: string | number, errback: ErrProcCallback): void;
 
 /**
  * Zero-downtime rolling restart. At least one process will be kept running at
@@ -111,7 +112,7 @@ export function reload(process: string|number, errback: ErrProcCallback): void;
  * environment from process.env before reloading your process.
  * @param errback - called when the process is reloaded
  */
-export function reload(process: string|number, options: ReloadOptions, errback: ErrProcCallback): void;
+export function reload(process: string | number, options: ReloadOptions, errback: ErrProcCallback): void;
 
 /**
  * Kills the pm2 daemon (same as pm2 kill). Note that when the daemon is killed, all its
@@ -127,7 +128,7 @@ export function killDaemon(errback: ErrProcDescCallback): void;
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback
  */
-export function describe(process: string|number, errback: ErrProcDescsCallback): void;
+export function describe(process: string | number, errback: ErrProcDescsCallback): void;
 
 /**
  * Gets the list of running processes being managed by pm2.
@@ -148,7 +149,7 @@ export function dump(errback: ErrResultCallback): void;
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback
  */
-export function flush(process: number|string, errback: ErrResultCallback): void;
+export function flush(process: number | string, errback: ErrResultCallback): void;
 
 /**
  * @param errback
@@ -174,7 +175,7 @@ export function launchBus(errback: ErrBusCallback): void;
  * a process id, or the string “all” to indicate that all scripts should be restarted.
  * @param errback
  */
-export function sendSignalToProcessName(signal:string|number, process: number|string, errback: ErrResultCallback): void;
+export function sendSignalToProcessName(signal: string | number, process: number | string, errback: ErrResultCallback): void;
 
 /**
  * - Registers the script as a process that will start on machine boot. The current process list will be dumped and saved for resurrection on reboot.
@@ -198,6 +199,8 @@ export interface Proc {
   vizion?: boolean;
   autorestart?: boolean;
   exec_mode?: string;
+  stop_exit_codes?: number[];
+
   exec_interpreter?: string;
   pm_exec_path?: string;
   pm_cwd?: string;
@@ -413,7 +416,7 @@ export interface StartOptions {
   /**
    * If set to true, the application will be restarted on change of the script file.
    */
-  watch?: boolean|string[];
+  watch?: boolean | string[];
   /**
    * (Default: false) By default, pm2 will only start a script if that script isn’t
    * already running (a script is a path to an application, not the name of an application
@@ -434,7 +437,7 @@ export interface StartOptions {
 
 interface ReloadOptions {
   /**
-   * (Default: false) If true is passed in, pm2 will reload it’s environment from process.env 
+   * (Default: false) If true is passed in, pm2 will reload it’s environment from process.env
    * before reloading your process.
    */
   updateEnv?: boolean;

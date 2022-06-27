@@ -2,7 +2,7 @@
   "script": {
     "type": "string",
     "require": true,
-    "alias" : "exec",
+    "alias": "exec",
     "docDescription": "Path of the script to launch, required field"
   },
   "name": {
@@ -53,18 +53,30 @@
       "array",
       "string"
     ],
-    "alias": ["interpreterArgs", "interpreter_args"],
+    "alias": [
+      "interpreterArgs",
+      "interpreter_args"
+    ],
     "docDescription": "Arguments to pass to the interpreter"
   },
   "out_file": {
     "type": "string",
-    "alias": ["out", "output", "out_log"],
+    "alias": [
+      "out",
+      "output",
+      "out_log"
+    ],
     "docDefault": "~/.pm2/logs/<app_name>-out.log",
     "docDescription": "File path for stdout (each line is appended to this file)"
   },
   "error_file": {
     "type": "string",
-    "alias": ["error", "err", "err_file", "err_log"],
+    "alias": [
+      "error",
+      "err",
+      "err_file",
+      "err_log"
+    ],
     "docDefault": "~/.pm2/logs/<app_name>-error.err",
     "docDescription": "File path for stderr (each line is appended to this file)"
   },
@@ -124,7 +136,7 @@
     "docDescription": "File path where the pid of the started process is written by pm2"
   },
   "restart_delay": {
-    "type" : "number",
+    "type": "number",
     "docDefault": 0,
     "docDescription": "Time in ms to wait before restarting a crashing app"
   },
@@ -177,14 +189,14 @@
   },
   "merge_logs": {
     "type": "boolean",
-    "alias" : "combine_logs",
+    "alias": "combine_logs",
     "docDefault": false,
     "docDescription": "In cluster mode, merge each type of logs into a single file (instead of having one for each cluster)"
   },
   "vizion": {
     "type": "boolean",
-    "default" : true,
-    "docDefault" : "True",
+    "default": true,
+    "docDefault": "True",
     "docDescription": "Enable or disable the versioning metadatas (vizion library)"
   },
   "autorestart": {
@@ -300,7 +312,10 @@
     "docDescription": "Rename the NODE_APP_INSTANCE environment variable"
   },
   "pmx": {
-    "type": ["boolean", "string"],
+    "type": [
+      "boolean",
+      "string"
+    ],
     "default": true,
     "docDefault": "True",
     "docDescription": "Enable or disable pmx wrapping"
@@ -321,12 +336,12 @@
     "type": "number",
     "docDescription": "Shortcut to inject a PORT environment variable"
   },
-  "username" : {
+  "username": {
     "type": "string",
     "docDescription": "Current user that started the process"
   },
   "uid": {
-    "type" : [
+    "type": [
       "number",
       "string"
     ],
@@ -335,7 +350,7 @@
     "docDescription": "Set user id"
   },
   "gid": {
-    "type" : [
+    "type": [
       "number",
       "string"
     ],
@@ -350,7 +365,7 @@
   },
   "kill_retry_time": {
     "type": "number",
-    "default" : 100
+    "default": 100
   },
   "write": {
     "type": "boolean"
@@ -358,5 +373,9 @@
   "io": {
     "type": "object",
     "docDescription": "Specify apm values and configuration"
+  },
+  "stop_exit_codes": {
+    "type": "array",
+    "docDescription": "List of exit codes that should allow the process to stop (skip autorestart)."
   }
 }
